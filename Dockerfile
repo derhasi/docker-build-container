@@ -19,7 +19,8 @@ RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/lo
 # Install node.js and some common dependencies.
 RUN curl -sL https://deb.nodesource.com/setup | bash -
 RUN apt-get install -y nodejs
-RUN npm install -g bower grunt gulp
-
+# Update npm before we do anything else, as the one packed with node is really old.
+RUN npm install -g npm
+RUN npm install -g grunt-cli
 
 WORKDIR /data
