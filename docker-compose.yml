@@ -1,0 +1,5 @@
+# Cli agent to use for build processes.
+cli:
+  build: .
+  volumes:
+    - ..:/data

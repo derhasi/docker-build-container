@@ -1,5 +1,0 @@
-# Cli agent we can use for the build
-cli:
-  build: .
-  volumes:
-    - ../..:/data
