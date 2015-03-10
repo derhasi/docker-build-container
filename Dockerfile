@@ -14,10 +14,17 @@ RUN apt-get update && apt-get install -y \
         lsb-release \
         python-all \
         rlwrap \
+        locales \
     && docker-php-ext-install iconv mcrypt \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd \
     && docker-php-ext-install zip
+
+RUN dpkg-reconfigure locales && \
+    locale-gen en_US.UTF-8 && \
+    /usr/sbin/update-locale LANG=en_US.UTF-8
+
+ENV LC_ALL C.UTF-8
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
@@ -45,6 +52,5 @@ RUN gem install toolkit  -v 2.6.0
 RUN gem install breakpoint -v 2.5.0
 RUN gem install oily_png -v 1.1.2
 RUN gem install singularitygs -v "~>1.4"
-
 
 WORKDIR /data
