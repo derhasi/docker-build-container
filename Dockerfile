@@ -32,4 +32,19 @@ RUN curl https://deb.nodesource.com/node012/pool/main/n/nodejs/nodejs_0.12.0-1no
 RUN npm install -g npm
 RUN npm install -g grunt-cli
 
+# Installing ruby ...
+RUN apt-get install -y ruby
+RUN apt-get install -y ruby-dev
+# ... and some essential gems
+RUN gem install sass -v 3.4.9
+RUN gem install sass-globbing -v 1.1.1
+RUN gem install compass -v 1.0.1
+RUN gem install compass-normalize -v 1.5
+RUN gem install compass-rgbapng -v 0.2.1
+RUN gem install toolkit  -v 2.6.0
+RUN gem install breakpoint -v 2.5.0
+RUN gem install oily_png -v 1.1.2
+RUN gem install singularitygs -v "~>1.4"
+
+
 WORKDIR /data
