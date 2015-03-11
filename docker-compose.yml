@@ -2,4 +2,4 @@
 cli:
   build: .
   volumes:
-    - ..:/data
+    - ./data:/data
